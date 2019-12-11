@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+
+
+.accueil{
+background-color:#275FA0;
+padding:0;
+margin:0;
+}
+
+.reservation{
+display:flex;
+padding:0;
+margin:0;
+background-image:url(../img/fondinscription.jpg);
+background-size:cover;		
+}
+
+.planning{
+display:flex;
+padding:0;
+margin:0;
+background-color: #88C1D0;		
+}
+
+
+.inscription{
+display:flex;
+justify-content:space-between;
+background-image:url(../img/fondinscription.jpg);
+background-size:cover;
+padding:0;
+margin:0;	
+}
+
+.profil{
+display:flex;
+justify-content:space-between;
+background-image:url(../img/fondinscription.jpg);
+background-size:cover;
+padding:0;
+margin:0;
+}
+
+.connexion{
+display:flex;
+justify-content:space-between;
+background-image:url(../img/fondinscription.jpg);
+background-size:cover;
+padding:0;
+margin:0;		
+}
+
+.form-style-5{
+	width: 25%;
+	min-width:300px;
+	padding: 10px 20px;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: 'Raleway', sans-serif;
+	
+}
+
+.form-style-4{
+	display:flex;
+	justify-content:center;
+	padding: 10px 8px;
+	margin: 10px auto;
+	border-radius: 8px;
+	font-family: 'Raleway', sans-serif;	
+}
+
+.form-style-5 fieldset{
+	border: none;
+}
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+
+
+.form-style-5 input[type="datetime-local"],
+.form-style-5 input[type="text"],
+.form-style-5 input[type="password"],
+.form-style-5 textarea{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e8eeef;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+}
+
+.form-style-5 input[type="password"]:focus,
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 textarea:focus{
+	background: #d2d9dd;
+}
+
+.form-style-5 .rond {
+	background: #A9CCE3;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-4 input[type="submit"]{
+	position: relative;
+	display: block;
+	padding: 10px 39px 8px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #A9CCE3;
+	font-size: 15px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	border: 1px solid #A9CCE3;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+	font-family: 'Raleway', sans-serif;
+}	
+
+
+
+
+.form-style-5 input[type="submit"]
+{
+	position: relative;
+	display: block;
+	padding: 10px 39px 8px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #A9CCE3;
+	font-size: 15px;
+	text-align: center;
+	font-style: normal;
+	width: 50%;
+	border: 1px solid #A9CCE3;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+	font-family: 'Raleway', sans-serif;
+}
+
+form input[type="submit"]:hover{
+	cursor: pointer;
+	background: #FBC02D;
+}
+
+.form-style-4 input[type="submit"]:hover,
+.form-style-5 input[type="submit"]:hover
+{
+	background: #5499C7;
+	cursor: pointer;
+}
+
+textarea{
+resize:none;	
+}
+
+.form-style-5 label {
+	font-size: 1em;
+	margin-bottom: 10px;
+	text-align:center;
+	
+}
+.horraire{
+text-align:center;
+font-size:10px;
+}
+
+form input[type="submit"]{
+	position: relative;
+	display: block;
+	padding: 10px 39px 8px 39px;
+	margin: 0 auto;
+	background: #FFCA4B;
+	font-size: 15px;
+	text-align: center;
+	font-style: normal;
+	border: 1px solid ;
+	border-width: 1px 1px 3px;
+	font-family: 'Raleway', sans-serif;	
+	margin-top:5%;
+}
+
+table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  font-family: 'Roboto Mono', monospace;
+}
+
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+  
+}
+
+table.blueTable tbody td {
+  font-size: 85%;
+  font-family: 'Roboto Mono', monospace;
+  font-weight:bold;
+}
+
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+	min-width:150px;
+    background-color: #f4f7f8;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+	font-family: 'Raleway', sans-serif;
+}
+
+li a:hover:not(.active) {
+    background-color: #FFCB4B;
+    color: white;
+}
+
+.formulaire{	
+display:flex;
+margin-top:10%;
+width:85%;
+height:10%;
+}
+
+.formulaireconnexion{	
+display:flex;
+margin-top:10%;
+width:85%;
+height:10%;
+margin-left:15%;
+}
+
+.formulairereservation{	
+display:flex;
+margin-top:5%;
+width:85%;
+height:10%;
+margin-left:15%;
+}
+
+.formulairereservation2{	
+display:flex;
+margin-top:1.5%;
+width:85%;
+height:10%;
+margin-left:15%;
+}
+
+
+::placeholder {
+  
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8em;
+}
+
+.affichage{
+margin-bottom:5%;
+font-size:0.7em;
+color:red;
+}
+
+.titreaccueil{
+width:85%;
+display:flex;
+justify-content:center;
+font-family: 'Roboto Mono', monospace;
+color: #88C1C7;
+margin-left:15%;
+height:3%;
+font-size:30px;
+}
+
+.photossalles{
+display:flex;
+justify-content:space-between;
+width:80%;
+margin-left:18%;
+margin-top:10%;	
+}
+
+
+
+.tableaux{
+display:flex;
+flex-direction:column;	
+margin-top:5%;	
+display:flex;
+justify-content:space-between;
+width:80%;
+margin-left:18%;
+}
+
+
+.zoom{
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.zoom:hover{
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+
+.formprofil{
+display:flex;
+margin-top:10%;
+width:85%;
+height:10%;
+margin-left:15%;
+	
+}
+
+.photos{
+display:flex;
+justify-content:space-between;
+width:80%;
+margin-left:18%;
+margin-top:5%;	
+}
+
+.photosplateforme{
+margin-top:8%;	
+}
+
+footer{
+height:20%;
+background-color: #88C1D0;
+margin-top: 5%;
+display:flex;
+align-items:center;
+}
+
+.footer{
+margin-left:18%;
+width:80%;
+display:flex;
+justify-content:space-between;
+color: #666666;
+font-size:90%;	
+	
+}
