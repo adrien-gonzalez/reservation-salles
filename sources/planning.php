@@ -11,6 +11,13 @@
 <?php
 session_start();
 
+
+if(isset($_POST['envoyer']))
+{
+	$_SESSION['id']=$_POST['test'];
+	header("Location: reservation.php");
+}
+
 if(isset($_POST['deco']))
 {
 unset($_SESSION['login']);
@@ -49,710 +56,82 @@ else
 <?php	
 }
 
-	$connexion= mysqli_connect("localhost", "root", "", "reservationsalles"); 
-	$query="SELECT DAYOFWEEK(debut) FROM reservations";
-	$query1="SELECT * FROM `utilisateurs` ,`reservations` WHERE utilisateurs.id = id_utilisateur";
-	$result= mysqli_query($connexion, $query);
-	$result1= mysqli_query($connexion, $query1);
-	
+	$db=mysqli_connect("localhost","root","","reservationsalles");
+	mysqli_set_charset($db, "utf8");
+	$date="SELECT * FROM reservations";
+	$query=mysqli_query($db, $date);
+	$result=mysqli_fetch_all($query);
 	
 ?>
 
 <section class="tableaux">
 
 <article class="planningtable">
-	<table class="blueTable">
+<table class="BlueTable">
+	<thead>
 		<tr>
-		<th></th>
-		<th>8h-9h</th>
-		<th>9h-10h</th>
-		<th>10h-11h</th>
-		<th>11h-12h</th>
-		<th>12h-13h</th>
-		<th>13h-14h</th>
-		<th>14h-15h</th>
-		<th>15h-16h</th>
-		<th>16h-17h</th>
-		<th>17h-18h</th>
+			<th>
+			</th>
+			<th>
+				Lundi
+			</th>
+			<th>
+				Mardi
+			</th>
+			<th>
+				Mercredi
+			</th>
+			<th>
+				Jeudi
+			</th>
+			<th>
+				Vendredi
+			</th>
+			<th>
+				Samedi
+			</th>
+			<th>
+				Dimanche
+			</th>
 		</tr>
+	</thead>
+	<tbody>
+		<?php
 		
-	<tr>
-	<th>Lundi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; echo $row1['id']; ?>	
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="2")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre'];  ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	
-	
-	
-	<tr>
-	<th>Mardi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	</form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="3")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<tr>
-	<th>Mercredi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="4")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<tr>
-	<th>Jeudi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="5")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<tr>
-	<th>Vendredi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="6")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<tr>
-	<th>Samedi</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="7")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<tr>
-	<th>Dimanche</th>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="08:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="09:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="10:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="11:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="12:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="13:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="14:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="15:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>	
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="16:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?>
-	</td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	<td><?php while(($row = mysqli_fetch_array($result))&&($row1 = mysqli_fetch_array($result1))){if(($row['DAYOFWEEK(debut)']=="1")&&(SUBSTR($row1['debut'], 11,8)=="17:00:00")){?>
-	<?php echo $row1['login']; echo "<br>"; echo $row1['titre']; ?>
-	<form method="post">	
-		<input name="envoyer" type="submit" value="Détail">
-		<input name="test" type="hidden" value="<?php echo $row1['id']; ?>">
-	 </form>
-	<?php }} ?></td>
-	<?php $result= mysqli_query($connexion, $query); $result1= mysqli_query($connexion, $query1);?>
-	</tr>
-	
-	<?php mysqli_close($connexion);?>
-	
-	<?php
-	if(isset($_POST['envoyer']))
-	{
-	$_SESSION['id']=$_POST['test'];
-	header("Location: reservation.php");
-	}
-	?>
-	
-	</table>
+		for($ligne =8; $ligne <= 19; $ligne++ )
+		{
+			echo "<tr>";
+			echo "<td>".$ligne."</td>";
+
+			for($colonne = 1; $colonne <= 7; $colonne++)
+			{
+				echo "<td>";
+				foreach($result as $value)
+				{
+				$jour=date("w", strtotime($value[3]));
+				$h=date("H", strtotime($value[3]));
+				if($h==$ligne && $jour== $colonne)
+				{
+					echo $value[2];
+				?>
+					<form method="post">	
+						<input name="envoyer" type="submit" value="Détail">
+						<input name="test" type="hidden" value="<?php echo $value[0]; ?>">
+					</form>	
+				<?php					
+				}
+			}
+				echo "</td>";
+			}
+		}
+		echo "</tr>";
+
+?>
+	</tbody>
+		
+</table>
 
 
-<?php
-if((isset($_SESSION['login']))&&(isset($_SESSION['password'])))
-{
-?>
-	<form method="post" action="reservation-form.php">
-		<input type="submit" value="Faire une réservation">
-	</form>
-<?php	
-}
-?>
 </article>
 
 </section>
