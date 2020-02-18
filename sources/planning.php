@@ -112,7 +112,7 @@ else
 				$h=date("H", strtotime($value[3]));
 				if($h==$ligne && $jour== $colonne)
 				{
-					echo $value[2];
+					echo $value[1];
 				?>
 					<form method="post">	
 						<input name="envoyer" type="submit" value="Détail">
